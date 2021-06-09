@@ -1,23 +1,19 @@
+import React,{useContext,useState,useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import PostList from './PostList';
+import PostDetail from './PostDetail';
+import PostStore from './PostStore';
+import {PostStoreProvider} from './PostStore'
 function App() {
+  const [postList,setPostList]=useState([]);
+  const [postId,setPostId]=useState('')
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <PostStoreProvider>
+      <PostList />
+      <PostDetail />
+      </PostStoreProvider>
     </div>
   );
 }
